@@ -1,0 +1,142 @@
+.header-bar{
+  position: fixed;
+  background-color: rgb(45, 45, 45);
+  color: white;
+  font-weight: bold;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 80px;
+  }
+  
+  .header-menu{
+  background-color: rgb(133, 133, 133);
+  font-size: 23px;
+  text-align: center;
+  padding-top: 8px;
+  height: 40px;
+  margin-top: 22px;
+  margin-left: 30px;
+  width: 80px;
+  position: absolute;
+  border-radius: 7px;
+  }
+  
+  .header-menu:hover{
+    background-color: rgb(152, 152, 152);
+  }
+  
+  .header-menu:active{
+    background-color: rgb(119, 119, 119);
+  }
+  
+  .header-title{
+  font-size: 30px;
+  text-align: center;
+  display: flex;
+  justify-items: center;
+  width: 160px;
+  left: 43%;
+  top: -6px;
+  position: absolute;
+  }
+  
+  .header-newchat{
+  background-color: rgb(133, 133, 133);
+  color: white;
+  text-align: center;
+  right: 40px;
+  width: 35px;
+  height: 35px;
+  font-size:24px;
+  margin-top: 29px;
+  position: absolute;
+  align-content: center;
+  border-radius: 40%;
+  border: solid;
+  border: 0;
+  }
+  
+  .header-newchat:hover{
+    background-color: rgb(172, 170, 170);
+  }
+  
+  .header-newchat:active{
+    background-color: rgb(119, 118, 118);
+  }
+  
+  .header-button{
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  
+  /* .body{
+    
+    background-color: rgb(96, 96, 96);
+    height: 200vh;
+    margin-top: -10px;
+    left: 80px;
+  } */
+  
+  .body-menubar-right{
+  background-color: rgb(45, 45, 45);
+  height: 100vh;
+  width: 150px;
+  top: 80px;
+  position: fixed;
+  }
+  
+  
+  .body-messagebox{
+  background-color: rgb(134, 134, 134);
+  height: 200vh;
+  left: 140px;
+  }
+  
+  .body-input{
+    display: flex;
+    position: fixed;
+    
+    height: 60px;
+    bottom: 24px;
+    left: 160px;
+    right: 10px;
+  }
+  
+  
+  
+  .body-textbox{
+    background-color: aqua;
+    width: 95%;
+    background-color: rgb(217, 217, 217);
+    border-radius: 10px;
+    padding-left: 17px;
+    font-size: 19px;
+    border: solid;
+    border: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+  }
+  
+  
+  .body-button{
+  background-color: rgb(53, 197, 195);
+  border-radius: 8px;
+  width: 90px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-align: 0;
+  margin-left: 6px;
+  border: solid;
+  border: 0px;
+  }
+  
+  .body-button:hover{
+    background-color: rgb(62, 212, 210);
+  }
+  .body-button:active{
+    background-color: rgb(49, 170, 168);
+  }
