@@ -1,10 +1,39 @@
 
 import './App.css';
+import {useEffect, useState} from 'react';
 import io from 'socket.io-client'
+import ScrollToBottom from "react-scroll-to-bottom"
 
 const socket = io.connect("http://localhost:3001");
 
+
 function App() {
+
+  const [currentMessage, setCurrentMessage] = useState("");
+  const [messageList, setMessageList] = useState([]);
+
+  const sendMessage = async () => {
+    if (currentMessage !== "") {
+      const messageData = {
+        message: currentMessage,
+        time:
+          new Date(Date.now()).getHours() +
+          ":" +
+          new Date(Date.now()).getMinutes(),
+      };
+
+      await socket.emit("send_message", messageData);
+      setMessageList((list) => [...list, messageData]);
+      setCurrentMessage("");
+    }
+  };
+
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      setMessageList((list) => [...list, data]);
+    });
+  }, [socket]);
+
   return (
     <div className="App">
     <header>
@@ -18,11 +47,39 @@ function App() {
     </header>
     <body className='body'>
         <div className='body-menubar-right'></div>
+
          <div className='body-messagebox'>
+
+          
+         <ScrollToBottom className="body-chat">
+          {messageList.map((messageContent) => {
+            return (
+              
+                <div>
+                  <div className="message-content">
+                    <p>{messageContent.message}</p>
+                  </div>
+                  <div className="message-meta">
+                    <p id="time">{messageContent.time}</p>
+                  </div>
+                
+              </div>
+            );
+          })}
+         </ScrollToBottom>
+         
     
            <div className='body-input'>
-            <input className='body-textbox' type="text" placeholder="Type your message here..."></input>
-            <button className='body-button'>Send</button>
+            <input className='body-textbox' type="text" placeholder="Type your message here..."
+            value={currentMessage}
+            onChange={(event => {
+              setCurrentMessage(event.target.value);
+            })}
+            onKeyPress={(event) => {
+              event.key === "Enter" && sendMessage();
+            }}
+            ></input>
+            <button className='body-button' onClick={sendMessage}>Send</button>
            </div>
      
          </div>
