@@ -92,8 +92,26 @@
   .body-messagebox{
   background-color: rgb(134, 134, 134);
   height: 100vh;
-  left: 140px;
+  left: 150px;
+  right: 0;
+  margin-bottom: 0;
   }
+
+   .body-chat{
+    position: fixed;
+    top: 80px;
+    height: 600px;
+    bottom: 24px;
+    margin-left: 150px;
+    right: 0;
+    background-color: rgb(134, 134, 134);
+    padding-left: 10%;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    font-family: Söhne Mono,Monaco,Andale Mono,Ubuntu Mono,monospace;
+  }
+  
   
   .body-input{
     display: flex;
@@ -118,19 +136,10 @@
     border: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
-  .body-chat{
-    position: fixed;
-    background-color: rgb(47, 153, 245);
-    top: 135px;
-    left: 150px;
-    right: 0;
-    padding-left: 10%;
-    font-size: 24px;
-    font-weight: 600;
-    color: white;
-    font-family: Söhne Mono,Monaco,Andale Mono,Ubuntu Mono,monospace!important;;
-  }
+
   
+  
+
   
   .body-button{
   background-color: rgb(53, 197, 195);

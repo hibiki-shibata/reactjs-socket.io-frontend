@@ -1,4 +1,3 @@
-
 import './App.css';
 import {useEffect, useState} from 'react';
 import io from 'socket.io-client'
@@ -6,6 +5,7 @@ import ScrollToBottom from "react-scroll-to-bottom"
 
 const socket = io.connect("http://localhost:3001");
 
+var started = false
 
 function App() {
 
@@ -23,16 +23,24 @@ function App() {
       };
 
       await socket.emit("send_message", messageData);
-      setMessageList((list) => [...list, messageData]);
+      // setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
     }
   };
 
+ 
   useEffect(() => {
-    socket.on("receive_message", (data) => {
-      setMessageList((list) => [...list, data]);
-    });
-  }, [socket]);
+    if(!started) {
+      console.log("use effect call")
+      socket.on("receive_message", (data) => {
+        console.log("receive message ", data)
+        setMessageList((list) => [...list, data]);
+      });
+    }
+    started = true
+  }, []);
+  
+  
 
   return (
     <div className="App">
