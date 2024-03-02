@@ -1,9 +1,10 @@
 import './App.css';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import io from 'socket.io-client'
 import ScrollToBottom from "react-scroll-to-bottom"
 
-const socket = io.connect("http://localhost:8000");
+const socket = io.connect("http://localhost:4000");
+
 
 var started = false
 
@@ -28,9 +29,9 @@ function App() {
     }
   };
 
- 
+
   useEffect(() => {
-    if(!started) {
+    if (!started) {
       console.log("use effect call")
       socket.on("receive_message", (data) => {
         console.log("receive message ", data)
@@ -39,30 +40,30 @@ function App() {
     }
     started = true
   }, []);
-  
-  
+
+
 
   return (
     <div className="App">
-    <header>
-      <div className='header-bar'>
-        <p className='header-menu'>Menu</p>
-        <p className='header-title'>New chat</p>
-        <button className='header-newchat' type="button">
-          <p className='header-button'>+</p>
-        </button>
-      </div>
-    </header>
-    <body className='body'>
+      <header>
+        <div className='header-bar'>
+          <p className='header-menu'>Menu</p>
+          <p className='header-title'>New chat</p>
+          <button className='header-newchat' type="button">
+            <p className='header-button'>+</p>
+          </button>
+        </div>
+      </header>
+      <body className='body'>
         <div className='body-menubar-right'></div>
 
-         <div className='body-messagebox'>
+        <div className='body-messagebox'>
 
-          
-         <ScrollToBottom className="body-chat">
-          {messageList.map((messageContent) => {
-            return (
-              
+
+          <ScrollToBottom className="body-chat">
+            {messageList.map((messageContent) => {
+              return (
+
                 <div>
                   <div className="message-content">
                     <p>{messageContent.message}</p>
@@ -70,29 +71,29 @@ function App() {
                   <div className="message-meta">
                     <p id="time">{messageContent.time}</p>
                   </div>
-                
-              </div>
-            );
-          })}
-         </ScrollToBottom>
-         
-    
-           <div className='body-input'>
-            <input className='body-textbox' type="text" placeholder="Type your message here..."
-            value={currentMessage}
-            onChange={(event => {
-              setCurrentMessage(event.target.value);
+
+                </div>
+              );
             })}
-            onKeyPress={(event) => {
-              event.key === "Enter" && sendMessage();
-            }}
+          </ScrollToBottom>
+
+
+          <div className='body-input'>
+            <input className='body-textbox' type="text" placeholder="Type your message here..."
+              value={currentMessage}
+              onChange={(event => {
+                setCurrentMessage(event.target.value);
+              })}
+              onKeyPress={(event) => {
+                event.key === "Enter" && sendMessage();
+              }}
             ></input>
             <button className='body-button' onClick={sendMessage}>Send</button>
-           </div>
-     
-         </div>
-    </body>
-      </div>
+          </div>
+
+        </div>
+      </body>
+    </div>
   );
 }
 
